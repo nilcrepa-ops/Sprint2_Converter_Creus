@@ -1,14 +1,17 @@
 package com.example.sprint2_converter_creus.ui;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import com.example.sprint2_converter_creus.R;
 import com.example.sprint2_converter_creus.conversion.Category;
@@ -27,6 +30,7 @@ public class ConversionActivity extends AppCompatActivity {
     private Button btnConvert;
     private TextView tvResult;
     private Button btnBack;
+    private ImageButton btnTheme;
 
     private Category currentCategory;
 
@@ -42,6 +46,24 @@ public class ConversionActivity extends AppCompatActivity {
         btnConvert = findViewById(R.id.btnConvert);
         tvResult = findViewById(R.id.tvResult);
         btnBack = findViewById(R.id.btnBack);
+        btnTheme = findViewById(R.id.btnTheme);
+
+        int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        if (currentNightMode == Configuration.UI_MODE_NIGHT_YES) {
+            btnTheme.setImageResource(R.drawable.ic_light);
+        } else {
+            btnTheme.setImageResource(R.drawable.ic_toggle_theme);
+        }
+
+        btnTheme.setOnClickListener(v -> {
+            int nightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+
+            if (nightMode == Configuration.UI_MODE_NIGHT_YES) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            }
+        });
 
         String categoryName = getIntent().getStringExtra("EXTRA_CATEGORY_NAME");
         if (categoryName != null) {

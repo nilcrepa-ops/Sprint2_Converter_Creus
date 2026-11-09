@@ -5,31 +5,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8F9FA"
+    android:background="?android:attr/colorBackground"
     android:padding="20dp">
 
     <TextView
         android:id="@+id/tvCategoryTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:gravity="center"
-        android:textColor="#1F2937"
-        android:textSize="24sp"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Distance Conversion" />
 
+    <ImageButton
+        android:id="@+id/btnTheme"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Toggle Theme"
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_toggle_theme"
+        app:tint="?android:attr/textColorPrimary"/>
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardInputs"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        app:cardBackgroundColor="#FFFFFF"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="3dp"
+        app:cardBackgroundColor="?attr/colorSurface"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvCategoryTitle">
@@ -37,27 +50,30 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp">
+            android:padding="20dp">
 
             <TextView
                 android:id="@+id/lblValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Value to convert:"
-                android:textColor="#4B5563"
+                android:textColor="?android:attr/textColorSecondary"
                 android:textSize="14sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
                 android:id="@+id/etInputValue"
                 android:layout_width="0dp"
-                android:layout_height="48dp"
+                android:layout_height="52dp"
                 android:layout_marginTop="8dp"
                 android:background="@android:drawable/editbox_background"
                 android:hint="Enter number (e.g. 10.5)"
                 android:inputType="numberDecimal|numberSigned"
-                android:paddingHorizontal="12dp"
+                android:paddingHorizontal="16dp"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textColorHint="?android:attr/textColorSecondary"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -67,18 +83,20 @@
                 android:id="@+id/lblFrom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="20dp"
                 android:text="From unit:"
-                android:textColor="#4B5563"
+                android:textColor="?android:attr/textColorSecondary"
                 android:textSize="14sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/etInputValue" />
 
             <Spinner
                 android:id="@+id/spinnerFromUnit"
                 android:layout_width="0dp"
-                android:layout_height="48dp"
+                android:layout_height="52dp"
                 android:layout_marginTop="8dp"
+                android:background="@android:drawable/btn_dropdown"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/lblFrom" />
@@ -87,18 +105,21 @@
                 android:id="@+id/lblTo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="20dp"
                 android:text="To unit:"
-                android:textColor="#4B5563"
+                android:textColor="?android:attr/textColorSecondary"
                 android:textSize="14sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/spinnerFromUnit" />
 
             <Spinner
                 android:id="@+id/spinnerToUnit"
                 android:layout_width="0dp"
-                android:layout_height="48dp"
+                android:layout_height="52dp"
                 android:layout_marginTop="8dp"
+                android:background="@android:drawable/btn_dropdown"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/lblTo" />
@@ -109,12 +130,12 @@
     <Button
         android:id="@+id/btnConvert"
         android:layout_width="0dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="24dp"
         android:text="Convert"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:cornerRadius="12dp"
+        app:cornerRadius="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cardInputs" />
@@ -123,9 +144,9 @@
         android:id="@+id/cardResult"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        app:cardBackgroundColor="#E5E7EB"
-        app:cardCornerRadius="16dp"
+        android:layout_marginTop="24dp"
+        app:cardBackgroundColor="?attr/colorSurfaceVariant"
+        app:cardCornerRadius="20dp"
         app:cardElevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -136,24 +157,26 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:padding="24dp">
 
             <TextView
                 android:id="@+id/lblResultTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Converted Result"
-                android:textColor="#6B7280"
-                android:textSize="13sp" />
+                android:textColor="?attr/colorPrimary"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textAllCaps="true" />
 
             <TextView
                 android:id="@+id/tvResult"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="8dp"
                 android:text="---"
-                android:textColor="#111827"
-                android:textSize="26sp"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="28sp"
                 android:textStyle="bold"
                 tools:text="10.5 km = 6.52 mi" />
         </LinearLayout>
@@ -163,10 +186,10 @@
         android:id="@+id/btnBack"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="0dp"
-        android:layout_height="48dp"
+        android:layout_height="56dp"
         android:layout_marginBottom="8dp"
         android:text="Choose another category"
-        app:cornerRadius="12dp"
+        app:cornerRadius="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
