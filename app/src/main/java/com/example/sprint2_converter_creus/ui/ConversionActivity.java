@@ -10,6 +10,7 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
@@ -95,11 +96,33 @@ public class ConversionActivity extends AppCompatActivity {
     }
 
     private void setupSpinners() {
-        ArrayAdapter<Unit> adapter = new ArrayAdapter<>(
+        ArrayAdapter<Unit> adapter = new ArrayAdapter<Unit>(
                 this,
                 android.R.layout.simple_spinner_item,
                 currentCategory.getUnits()
-        );
+        ) {
+            @NonNull
+            @Override
+            public View getView(int position, View convertView, @NonNull android.view.ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+                android.widget.TextView tv = view.findViewById(android.R.id.text1);
+                if (tv != null) {
+                    tv.setTextColor(getTextColorPrimary());
+                }
+                return view;
+            }
+
+            @NonNull
+            @Override
+            public View getDropDownView(int position, View convertView, @NonNull android.view.ViewGroup parent) {
+                View view = super.getDropDownView(position, convertView, parent);
+                android.widget.TextView tv = view.findViewById(android.R.id.text1);
+                if (tv != null) {
+                    tv.setTextColor(getTextColorPrimary());
+                }
+                return view;
+            }
+        };
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         spinnerFromUnit.setAdapter(adapter);
@@ -160,5 +183,12 @@ public class ConversionActivity extends AppCompatActivity {
                 "Conversion completed successfully!",
                 Snackbar.LENGTH_SHORT
         ).show();
+    }
+
+    private int getTextColorPrimary() {
+        int[] attrs = new int[]{android.R.attr.textColorPrimary};
+        try (android.content.res.TypedArray ta = obtainStyledAttributes(attrs)) {
+            return ta.getColor(0, android.graphics.Color.WHITE);
+        }
     }
 }
