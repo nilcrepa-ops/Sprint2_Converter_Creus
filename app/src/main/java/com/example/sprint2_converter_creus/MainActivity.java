@@ -1,17 +1,20 @@
 package com.example.sprint2_converter_creus;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import com.example.sprint2_converter_creus.conversion.Category;
 import com.example.sprint2_converter_creus.ui.ConversionActivity;
@@ -23,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView imgCategory;
     private Button btnContinue;
     private Category selectedCategory;
+    private ImageButton btnTheme;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,24 @@ public class MainActivity extends AppCompatActivity {
         spinnerCategory = findViewById(R.id.spinnerCategory);
         imgCategory = findViewById(R.id.imgCategory);
         btnContinue = findViewById(R.id.btnContinue);
+        btnTheme = findViewById(R.id.btnTheme);
+
+        int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        if (currentNightMode == Configuration.UI_MODE_NIGHT_YES) {
+            btnTheme.setImageResource(R.drawable.ic_light);
+        } else {
+            btnTheme.setImageResource(R.drawable.ic_toggle_theme);
+        }
+
+        btnTheme.setOnClickListener(v -> {
+            int nightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+
+            if (nightMode == Configuration.UI_MODE_NIGHT_YES) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            }
+        });
 
         ArrayAdapter<Category> adapter = new ArrayAdapter<>(
                 this,

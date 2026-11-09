@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Colores de marca (Primary) -->
+    <color name="indigo_500">#4F46E5</color> <!-- Modo claro -->
+    <color name="indigo_200">#818CF8</color> <!-- Modo oscuro -->
+
+    <!-- Fondos Modo Claro -->
+    <color name="background_light">#F8F9FA</color>
+    <color name="surface_light">#FFFFFF</color>
+    <color name="surface_variant_light">#EEF2FF</color> <!-- Fondo sutil para resultados -->
+
+    <!-- Fondos Modo Oscuro -->
+    <color name="background_dark">#121212</color>
+    <color name="surface_dark">#1E1E1E</color>
+    <color name="surface_variant_dark">#2D3748</color>
 </resources>

@@ -1,9 +1,16 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Sprint2_Converter_Creus" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-    </style>
+    <style name="Theme.Sprint2_Converter_Creus" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Colores principales -->
+        <item name="colorPrimary">@color/indigo_500</item>
 
-    <style name="Theme.Sprint2_Converter_Creus" parent="Base.Theme.Sprint2_Converter_Creus" />
+        <!-- Colores de fondo y tarjetas -->
+        <item name="android:colorBackground">@color/background_light</item>
+        <item name="colorSurface">@color/surface_light</item>
+        <item name="colorSurfaceVariant">@color/surface_variant_light</item>
+
+        <!-- Colores de texto automáticos -->
+        <item name="android:textColorPrimary">#111827</item>
+        <item name="android:textColorSecondary">#4B5563</item>
+    </style>
 </resources>
