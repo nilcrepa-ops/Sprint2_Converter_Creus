@@ -1,4 +1,6 @@
 package com.example.sprint2_converter_creus.conversion;
 
-public class ConversionStrategy {
+public interface ConversionStrategy {
+    double convert(double value, String fromUnit, String toUnit);
+
 }
